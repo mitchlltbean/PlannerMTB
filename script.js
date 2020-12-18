@@ -5,34 +5,55 @@ console.log(date)
 $("#currentDay").text(date)
 
 
+//TODO:use functions? to dynamically change the color of each form element based on current time. 
 
-//TODO:create the HTML elements make up. bootstrap row and coulums to contain an area for time(static text) an area for textinput(in a form to be saved later) and a button area(for form submit and local storage)
 var currentTime = moment().format('H')
 console.log(currentTime)
 
 var timeToday = $("textarea")
-
+console.log(timeToday)
 for (var i = 0 ; i < timeToday.length ; i++) {
 
     //Get element i's ID as a string
-    var textId = timeToday[i].id;
-    console.log(textId)
+    var textId = parseInt($(timeToday[i]).attr("data-h"));
+    console.log(textId + "looking here")
     //get element by ID
-    var manipID = document.getElementById(timeToday[i].id)
-
+    
+    //console.log(manipID + "hereeeeee")
     //remove any old classes from element
     
 
     // apply new class if task is present/past/future
     if (textId < currentTime) {
-        $(manipID).addClass("past");
+        $(timeToday[i]).addClass("past");
+        
     } else if (textId > currentTime) {
-        $(manipID).addClass("future");
+        $(timeToday[i]).addClass("future");
     } else {
-        $(manipID).addClass("present");
+        $(timeToday[i]).addClass("present");
     }
 }
 
 
 
-//TODO:use functions? to dynamically change the color of each form element based on current time. 
+
+
+
+
+//console.log()
+
+//TODO: a button area(for form submit and local storage)
+$("button").click(function(){
+    var currentH = $(this).siblings(".col-8").attr("data-h");
+    console.log(currentH)
+
+    var saveItem = $("textarea").val();
+    
+
+    localStorage.setItem(currentH, saveItem)
+
+
+
+})
+
+
