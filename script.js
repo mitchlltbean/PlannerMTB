@@ -7,11 +7,14 @@ $("#currentDay").text(date)
 
 //TODO:use functions? to dynamically change the color of each form element based on current time. 
 
-var currentTime = moment().format('H')
+var currentTime = moment().format('h')
 console.log(currentTime)
 
 var timeToday = $("textarea")
 console.log(timeToday)
+
+
+
 for (var i = 0 ; i < timeToday.length ; i++) {
 
     //Get element i's ID as a string
@@ -57,3 +60,7 @@ $("button").click(function(){
 })
 
 
+for (var i=9; i < 18; i++){
+$("#id-" + i).val(localStorage.getItem(i))
+
+}
